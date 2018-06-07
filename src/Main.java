@@ -14,7 +14,7 @@ public class Main {
         Handler handler = new Handler();
         try {
             SAXParser saxParser = parserFactory.newSAXParser();
-            saxParser.parse(new File("feed-test.xml"), handler);   //D:\BSUIR\3\OOP\feed.xml
+            saxParser.parse(new File("feed-test.xml"), handler);   //D:\BSUIR\4\OOP\feed.xml
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
