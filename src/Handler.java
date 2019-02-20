@@ -7,6 +7,12 @@ public class Handler extends DefaultHandler {
     private String name;
     private boolean isSkill = false;
     private boolean isSkilled = false;
+    private boolean isSkilled1 = false;
+    private boolean isSkilled2 = false;
+
+
+    private String [] skills = {"CSS3", "CodeIgniter"};
+    private int counter = 0;
 
     @Override
     public void startDocument() {
@@ -36,10 +42,15 @@ public class Handler extends DefaultHandler {
     @Override
     public void endElement(String url, String localName, String qName) {
         if (qName.equalsIgnoreCase("user")) {
-            if (isSkilled) {
+//            if (isSkilled1 && isSkilled2) {
+//                System.out.println(name);
+//            }
+//            isSkilled1 = false;
+//            isSkilled2 = false;
+            if (counter == skills.length) {
                 System.out.println(name);
             }
-            isSkilled = false;
+            counter = 0;
         }
     }
 
@@ -52,11 +63,21 @@ public class Handler extends DefaultHandler {
             }
             if (isSkill) {
                 String skill = new String(ch, start, length);
-                if (skill.equalsIgnoreCase("CodeIgniter")
-                        | skill.equalsIgnoreCase("CSS3")
-                        | skill.equalsIgnoreCase("Sinatra")) {
-                    isSkilled = true;
+
+                for (String str: skills) {
+                    if (str.equals(skill)) {
+                        counter++;
+                    }
                 }
+
+//                if (skill.equalsIgnoreCase("CSS3")) {
+//                    isSkilled1 = true;
+//                }
+//                if (skill.equalsIgnoreCase("CodeIgniter")) {
+//                    isSkilled2 = true;
+//                }
+
+
                 isSkill = false;
             }
 
